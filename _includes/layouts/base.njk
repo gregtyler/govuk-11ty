@@ -17,9 +17,17 @@
     {% include "../navigation.njk" %}
 
     {% block content %}
-      <main class="app-prose-scope" role="main">
-        {{ content | safe }}
-      </main>
+      <div class="govuk-width-container govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <main class="govuk-main-wrapper app-prose-scope" role="main">
+            <h1 class="govuk-heading-xl">
+              {% if subsection %}<span class="govuk-caption-xl">{{ subsection }}</span>{% endif %}
+              {{ title }}
+            </h1>
+            {{ content | safe }}
+          </main>
+        </div>
+      </div>
     {% endblock %}
 
     {% include "../footer.njk" %}
