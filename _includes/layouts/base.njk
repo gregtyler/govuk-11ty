@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or metadata.title }}</title>
+    <meta name="description" content="{{ description or metadata.description }}">
+
+    <!--[if lte IE 8]><link href="{{ '/assets/stylesheets/application-ie8.css' | url }}" rel="stylesheet"><![endif]-->
+    <!--[if gt IE 8]><!--><link href="{{ '/assets/stylesheets/application.css' | url }}" rel="stylesheet"><!--<![endif]-->
+
+    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
+  </head>
+  <body class="govuk-template__body">
+    {% include "../header.njk" %}
+    {% include "../navigation.njk" %}
+
+    {% block content %}
+      <main class="app-prose-scope" role="main">
+        {{ content | safe }}
+      </main>
+    {% endblock %}
+
+    {% include "../footer.njk" %}
+
+    <!-- Current page: {{ page.url | url }} -->
+
+    <script type="text/javascript" src="{{ '/assets/javascript/all.js' | url }}"></script>
+    <script type="text/javascript">
+      MOJFrontend.initAll();
+    </script>
+  </body>
+</html>
